@@ -61,10 +61,12 @@ namespace Tic_Tac_Toe
 
         public static int GetInput()
         {
+
             int choice = -1;
+            
             if (!int.TryParse(Console.ReadLine(), out choice))
             {
-                choice = -1;
+                choice= -1;
             }
 
             return choice;
