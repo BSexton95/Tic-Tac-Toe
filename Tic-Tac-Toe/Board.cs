@@ -33,60 +33,26 @@ namespace Tic_Tac_Toe
         {
             Console.WriteLine("Please Choose slot.");
             
-            bool gameBeingPlayed = false;
-            int choice = Game.GetInput();
+            int index = Game.GetInput() - 1;
 
-            while (!gameBeingPlayed)
+            int x = index / 3;
+            int y = index % 3;
+            
+            
+            SetToken(_currentToken, x, y);
+
+            
+            if (_currentToken == _player1Token)
             {
-                if (choice == 1 && SetToken(_currentToken, 0, 0))
-                {
-                    gameBeingPlayed = true;
-                    break;
-                }
-                else if (choice == 2 && SetToken(_currentToken, 0, 1))
-                {
-                    gameBeingPlayed = true;
-                }
-                else if (choice == 3 && SetToken(_currentToken, 0, 2))
-                {
-                    gameBeingPlayed = true;
-                }
-                else if (choice == 4 && SetToken(_currentToken, 1, 0))
-                {
-                    gameBeingPlayed = true;
-                }
-                else if (choice == 5 && SetToken(_currentToken, 1, 1))
-                {
-                    gameBeingPlayed = true;
-                }
-                else if (choice == 6 && SetToken(_currentToken, 1, 2))
-                {
-                    gameBeingPlayed = true;
-                }
-                else if (choice == 7 && SetToken(_currentToken, 2, 0))
-                {
-                    gameBeingPlayed = true;
-                }
-                else if (choice == 8 && SetToken(_currentToken, 2, 1))
-                {
-                    gameBeingPlayed = true;
-                }
-                else if (choice == 9 && SetToken(_currentToken, 2, 2))
-                {
-                    gameBeingPlayed = true;
-                }
-                
-
-                if (_currentToken == _player1Token)
-                {
-                    _currentToken = _player2Token;
-                }
-                else
-                {
-                    _currentToken = _player1Token;
-                }
-                
+                _currentToken = _player2Token;
             }
+            else
+            {
+                _currentToken = _player1Token;
+            }
+              
+            
+            
         }
 
         /// <summary>
@@ -115,15 +81,9 @@ namespace Tic_Tac_Toe
         /// <returns>Return false if the indices are out of range.</returns>
         public bool SetToken(char token, int posX, int posY)
         {
-            /*
-            int index = 0;
-            posX = index / 3;
-            posY = index % 3;
-            */
-
             int choice;
 
-            if (int.TryParse(_board[posX,posY].ToString(), out choice))
+            if (int.TryParse(_board[posX, posY].ToString(), out choice))
             {
                 _board[posX, posY] = token;
                 return true;
@@ -131,7 +91,7 @@ namespace Tic_Tac_Toe
             else
             {
                 Console.WriteLine("A player has already choosen this slot!");
-                
+                Console.ReadKey(true);
             }
 
             return false;
@@ -144,7 +104,20 @@ namespace Tic_Tac_Toe
         /// <returns>Returns false if there is not a winner</returns>
         private bool CheckWinner(char token)
         {
+            
+            for (int i = 0; i < 3; i++)
+            {
+                int matchCount = 0;
+
+                for (int j = 0; j < 3; j++)
+                {
+                    
+
+                }
+            }
+            
             return false;
+            
         }
 
         /// <summary>
