@@ -17,10 +17,7 @@ namespace Tic_Tac_Toe
         /// </summary>
         public void Start()
         {
-            _player1Token = 'x';
-            _player2Token = 'o';
-            _currentToken = _player1Token;
-            _board = new char[3, 3] { { '1', '2', '3' }, { '4', '5', '6' }, { '7', '8', '9' } };
+            InitializeBoard();
         }
 
         /// <summary>
@@ -31,6 +28,10 @@ namespace Tic_Tac_Toe
         /// </summary>
         public void Update()
         {
+            if (_gameOver)
+            {
+                Game.SetCurrentScene();
+            }
             Console.WriteLine("Please Choose slot.");
             
             int index = Game.GetInput() - 1;
@@ -70,6 +71,14 @@ namespace Tic_Tac_Toe
         public void End()
         {
             _gameOver = true;
+        }
+
+        public void InitializeBoard()
+        {
+            _player1Token = 'x';
+            _player2Token = 'o';
+            _currentToken = _player1Token;
+            _board = new char[3, 3] { { '1', '2', '3' }, { '4', '5', '6' }, { '7', '8', '9' } };
         }
 
         /// <summary>

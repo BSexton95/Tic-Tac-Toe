@@ -8,6 +8,8 @@ namespace Tic_Tac_Toe
     {
         private bool _gameOver = false;
         private Board _gameBoard;
+        private static int _currentScene;
+        private static int _sceneCount = 2;
 
         /// <summary>
         /// Begine the game.
@@ -39,6 +41,15 @@ namespace Tic_Tac_Toe
         /// </summary>
         public void Update()
         {
+            switch(_currentScene)
+            {
+                case 0:
+                    _gameBoard.Update();
+                    break;
+                case 1:
+                    RestartGame();
+                    break;
+            }
             _gameBoard.Update();
         }
 
@@ -59,6 +70,27 @@ namespace Tic_Tac_Toe
             _gameBoard.End();
         }
 
+        public void RestartGame()
+        {
+            Console.WriteLine("Restart? \n 1. Yes \n 2. No");
+            int choice = GetInput();
+
+            if (choice == 1)
+            {
+                _currentScene = 0;
+                _gameBoard.InitializeBoard();
+            }
+            else if (choice == 2)
+            {
+                EndApplication();
+            }
+            else
+            {
+
+            }
+
+        }
+
         public static int GetInput()
         {
 
@@ -70,6 +102,16 @@ namespace Tic_Tac_Toe
             }
 
             return choice;
+        }
+
+        public static bool SetCurrentScene(int index)
+        {
+            if ( index < 0 || index > _sceneCount)
+            {
+                return false;
+            }
+            _currentScene = index;
+            return true;
         }
     }
 }
