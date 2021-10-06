@@ -104,14 +104,19 @@ namespace Tic_Tac_Toe
         /// <returns>Returns false if there is not a winner</returns>
         private bool CheckWinner(char token)
         {
-            
+
             for (int i = 0; i < 3; i++)
             {
                 int matchCount = 0;
 
                 for (int j = 0; j < 3; j++)
                 {
-                    
+                    token = _board[i, j];
+                    matchCount++;
+                }
+                
+                if(matchCount == 3)
+                {
 
                 }
             }
